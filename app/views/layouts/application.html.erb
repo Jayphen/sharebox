@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ShareBox | <%= content_for?(:title) ? yield(:title) : "File-sharing web app" %></title>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <header>
+      <h2 class="logo">
+        <%= link_to "ShareBox", root_url %>
+      </h2>
+      <div id="login-user-status">
+        <% if user_signed_in? %>
+          <%= current_user.email %>
+          |
+          <%= link_to "Sign out", destroy_user_session_path %>
+        <% else %>
+          <em>Not signed in.</em>
+          <%= link_to "Sign in", new_user_session_path %>
+          or
+          <%= link_to "Sign up", new_user_registration_path %>
+        <% end %>
+      </div>
+    </header>
+    <div id="container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+      <%= content_tag :h1, yield(:title) if show_title? %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

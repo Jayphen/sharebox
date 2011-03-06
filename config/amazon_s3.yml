@@ -1,0 +1,11 @@
+development:
+  access_key_id: AKIAJYTJMMI35SXYBLQA
+  secret_access_key: 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
+    
+staging:
+  access_key_id: AKIAJYTJMMI35SXYBLQA
+  secret_access_key: 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
+    
+production:
+  access_key_id: AKIAJYTJMMI35SXYBLQA
+  secret_access_key: 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
