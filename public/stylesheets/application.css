@@ -120,6 +120,7 @@ nav ul {
 nav li {
   margin: 0 5px 0 0;
   padding: 0;
+  display: inline-block;
 }
 nav a, input[type=submit] {
   font-size: 12px;
@@ -136,3 +137,10 @@ nav a, input[type=submit] {
   cursor: pointer;
 }
 nav a:hover, input[type=submit]:hover { color: #006CFF; }
+
+tr.folder-list td:first-of-type:before {
+  content: "→";
+  position: relative;
+  font-size: 16px;
+  margin-right: 5px;
+}

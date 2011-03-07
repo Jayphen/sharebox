@@ -7,6 +7,7 @@
   <nav id="menu">
     <ul>
       <li><%= link_to "Upload", new_asset_path %></li>
+      <li><%= link_to "New Folder", new_folder_path %></li>
     </ul>
   </nav>
 
@@ -19,6 +20,14 @@
       </tr>
     </thead>
     <tbody>
+    <% @folders.each do |folder| %>
+      <tr class="folder-list">
+        <td><%= link_to folder.name, folder_path(folder) %></td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+    <% end %>
+      
     <% @assets.each do |asset| %>
       <tr>
         <td><%= link_to asset.file_name, download_url(asset) %></td>
