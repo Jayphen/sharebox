@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110306032530) do
+ActiveRecord::Schema.define(:version => 20110307105126) do
 
   create_table "assets", :force => true do |t|
     t.integer  "user_id"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(:version => 20110306032530) do
   end
 
   add_index "assets", ["user_id"], :name => "index_assets_on_user_id"
+
+  create_table "folders", :force => true do |t|
+    t.string   "name"
+    t.integer  "parent_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "folders", ["parent_id"], :name => "index_folders_on_parent_id"
+  add_index "folders", ["user_id"], :name => "index_folders_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false

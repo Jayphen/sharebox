@@ -103,13 +103,15 @@ label {
   font-size: 11px;
 }
 
-/* Index */
-#asset-listing { width: 100%; border: 0; }
-#asset-listing th {
+/* Tables */
+table { width: 100%; border: 0; }
+th {
   font-size: 120%;
   text-align: left;
 }
-#asset-listing th, #asset-listing td { padding: 5px; }
+th, td { padding: 5px; }
+
+/* Index */
 nav ul {
   margin: 0 0 20px 0;
   padding: 0;
