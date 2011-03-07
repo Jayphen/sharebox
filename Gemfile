@@ -10,7 +10,7 @@ gem 'devise'
 gem 'nifty-generators', :group => :development
 
 #for uploading files
-gem 'paperclip', '~> 2.3'
+gem 'paperclip', '2.3.6'
 gem "mocha", :group => :test
 #for Paperclip to use Amazon S3
 gem "aws-s3"

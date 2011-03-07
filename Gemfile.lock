@@ -49,7 +49,7 @@ GEM
     mime-types (1.16)
     mocha (0.9.12)
     nifty-generators (0.4.5)
-    paperclip (2.3.8)
+    paperclip (2.3.6)
       activerecord
       activesupport
     polyglot (0.3.1)
@@ -89,6 +89,6 @@ DEPENDENCIES
   devise
   mocha
   nifty-generators
-  paperclip (~> 2.3)
+  paperclip (= 2.3.6)
   rails (= 3.0.3)
   ruby-mysql
