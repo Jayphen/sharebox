@@ -45,8 +45,16 @@ class AssetsController < ApplicationController
 
   def destroy
     @asset = current_user.assets.find(params[:id])
+    @parent_folder = @asset.folder #grab the parent folder before deleting the record
     @asset.destroy
-    redirect_to assets_url, :notice => "Successfully destroyed asset."
+    flash[:notice] = "Successfully deleted the file."
+    
+    #redirect to a relevant path depending on the parent folder
+    if @parent_folder
+      redirect_to browse_path(@parent_folder)
+    else
+      direct_to root_url
+    end
   end
   
   #this action will let users download the files (after an auth check)

@@ -32,6 +32,13 @@
         <td><%= link_to folder.name, browse_path(folder) %></td>
         <td>-</td>
         <td>-</td>
+        <td class="actions">
+          <ul>
+            <li class="share"><%= link_to "Share" %></li>
+            <li class="rename"><%= link_to "Rename" %></li>
+            <li class="delete"><%= link_to "Delete", folder, :confirm => "Are you sure you want to delete the folder and all of its contents?", :method => :delete %></li>
+          </ul>
+        </td>
       </tr>
     <% end %>
       
@@ -40,6 +47,12 @@
         <td><%= link_to asset.file_name, download_url(asset) %></td>
         <td><%= number_to_human_size(asset.file_size, :precision => 3) %></td>
         <td><%= asset.uploaded_file_updated_at %></td>
+        <td class="actions">
+          <ul>
+            <li class="download"><%= link_to "Download" %></li>
+            <li class="delete"><%= link_to "Delete", asset, :confirm => "Are you sure?", :method => :delete %></li>
+          </ul>
+        </td>
       </tr>
     <% end %>
     </tbody>

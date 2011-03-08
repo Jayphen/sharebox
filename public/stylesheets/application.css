@@ -153,3 +153,32 @@ tr.folder-list td:first-of-type:before {
 .breadcrumbs a {
   text-decoration: none;
 }
+
+/* Actions */
+.actions ul {
+  margin: 0;
+  padding: 0;
+  float: right;
+}
+.actions ul li {
+  display: inline-block;
+  margin-left: 5px;
+}
+.actions a {
+  border: 1px solid #CFE9FF;
+  font-size: 80%;
+  padding: 2px 4px;
+  text-decoration: none;
+  border-radius: 3px;
+}
+.actions a:hover {
+  border-color: #8FCDFF;
+}
+.actions .delete a {
+  color: #BF0B12;
+  border-color: #FFCFD1;
+}
+.actions .delete a:hover {
+  color: #BF0B12;
+  border-color: #FF8F93;
+}
