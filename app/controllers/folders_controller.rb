@@ -7,6 +7,15 @@ class FoldersController < ApplicationController
 
   def show
     @folder = current_user.folders.find(params[:id])
+    @parent_folder = @folder.parent #grab parent folder
+    if @folder.save
+      flash[:notice] = "Successfully renamed folder."
+      if @parent_folder
+        redirect_to browse_path(@parent_folder)
+      else
+        redirect_to root_url
+      end
+    end
   end
 
   def new
@@ -36,7 +45,9 @@ class FoldersController < ApplicationController
   end
 
   def edit
-    @folder = current_user.folders.find(params[:id])
+    @folder = current_user.folders.find(params[:folder_id])
+    
+    @current_folder = @folder.parent #this is just for breadcrumbs 
   end
 
   def update

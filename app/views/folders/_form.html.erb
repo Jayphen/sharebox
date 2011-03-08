@@ -4,8 +4,12 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
   </p>
+  <%= f.hidden_field :parent_id %>
   <p>
-    <%= f.hidden_field :parent_id %>
-    <%= f.submit "Create Folder" %>
+<% if @folder.new_record? %>
+  <%= f.submit "Create Folder" %>
+<% else %>
+  <%= f.submit "Rename Folder" %>
+<% end %>
   </p>
 <% end %>

@@ -35,7 +35,7 @@
         <td class="actions">
           <ul>
             <li class="share"><%= link_to "Share" %></li>
-            <li class="rename"><%= link_to "Rename" %></li>
+            <li class="rename"><%= link_to "Rename", rename_folder_path(folder) %></li>
             <li class="delete"><%= link_to "Delete", folder, :confirm => "Are you sure you want to delete the folder and all of its contents?", :method => :delete %></li>
           </ul>
         </td>
@@ -49,7 +49,7 @@
         <td><%= asset.uploaded_file_updated_at %></td>
         <td class="actions">
           <ul>
-            <li class="download"><%= link_to "Download" %></li>
+            <li class="download"><%= link_to "Download", download_url(asset) %></li>
             <li class="delete"><%= link_to "Delete", asset, :confirm => "Are you sure?", :method => :delete %></li>
           </ul>
         </td>
