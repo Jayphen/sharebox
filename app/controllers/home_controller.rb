@@ -16,10 +16,10 @@ class HomeController < ApplicationController
     
     if @current_folder
       #getting the folders which are inside this @current_folder
-      @folders = @current_folder.assets.order("uploaded_file_file_name desc")
+      @folders = @current_folder.children
       
-      #TODO: fix this to show files under a specific folder if we're viewing that folder
-      @assets = current_user.assets.order("uploaded_file_file_name desc")
+      #show only the files under this current folder
+      @assets = @current_folder.assets.order("uploaded_file_file_name desc")
       
       render :action => "index"
     else

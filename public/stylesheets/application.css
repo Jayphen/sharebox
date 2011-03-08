@@ -144,3 +144,12 @@ tr.folder-list td:first-of-type:before {
   font-size: 16px;
   margin-right: 5px;
 }
+
+/* Breadcrumbs */
+.breadcrumbs {
+  margin: 10px 0;
+  font-weight: bold;
+}
+.breadcrumbs a {
+  text-decoration: none;
+}
