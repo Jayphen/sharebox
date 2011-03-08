@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
 
   has_many :assets
   has_many :folders
+  #for folders which this user has shared
+  has_many :shared_folders, :dependent => :destroy
+  #for folders which the user has been shared by others
+  has_many :being_shared_folders, :class_name => "SharedFolder", :foreign_key => "shared_user_id", :dependent => :destroy
 end

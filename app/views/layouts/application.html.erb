@@ -2,8 +2,10 @@
 <html>
   <head>
     <title>ShareBox | <%= content_for?(:title) ? yield(:title) : "File-sharing web app" %></title>
-    <%= stylesheet_link_tag "application" %>
-    <%= javascript_include_tag :defaults %>
+    <%= stylesheet_link_tag "application", "redmond/jquery-ui-1.8.10.custom" %>
+    <%= javascript_include_tag "jquery-1.4.4.min", "jquery-ui-1.8.10.custom.min" %>
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "rails" %>    
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>
