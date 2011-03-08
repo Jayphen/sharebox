@@ -2,4 +2,10 @@
 
 <%= render 'form' %>
 
-<p><%= link_to "Back to List", folders_path %></p>
+<p>
+<% if @folder.parent %>
+  <%= link_to "Back to '#{@folder.parent.name}'", browse_path(@folder.parent) %>
+<% else %>
+  <%= link_to "Back to home page", root_url %>
+<% end %>
+</p>
