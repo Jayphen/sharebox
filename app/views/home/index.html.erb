@@ -6,10 +6,11 @@
 
   <nav id="menu">
     <ul>
-      <li><%= link_to "Upload", new_asset_path %></li>
     <% if @current_folder %>
+      <li><%= link_to "Upload", new_sub_file_path(@current_folder) %></li>
       <li><%= link_to "New Folder", new_sub_folder_path(@current_folder) %></li>
     <% else %>
+      <li><%= link_to "Upload", new_asset_path %></li>    
       <li><%= link_to "New Folder", new_folder_path %></li>
     <% end %>
     </ul>

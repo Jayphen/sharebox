@@ -11,6 +11,10 @@ Sharebox::Application.routes.draw do
   
   #this route is for file downloads
   match "assets/get/:id" => "assets#get", :as => "download"
+  
   #for creating sub-folders
   match "browse/:folder_id/new_folder" => "folders#new", :as => "new_sub_folder"
+  
+  #for uploading files to folders
+  match "browse/:folder_id/new_file" => "assets#new", :as => "new_sub_file"
 end
