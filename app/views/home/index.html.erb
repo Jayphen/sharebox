@@ -28,7 +28,7 @@
     </thead>
     <tbody>
     <% @folders.each do |folder| %>
-      <tr class="folder-list">
+      <tr class="folder-list <%= folder.shared? ? 'shared_folder' : 'folder' %>" id="folder_<%= folder.id %>">
         <td><%= link_to folder.name, browse_path(folder) %></td>
         <td>-</td>
         <td>-</td>
