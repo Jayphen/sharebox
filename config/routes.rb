@@ -20,4 +20,7 @@ Sharebox::Application.routes.draw do
   
   #for renaming a folder
   match "browse/:folder_id/rename" => "folders#edit", :as => "rename_folder"
+  
+  #for sharing the folder
+  match "home/share" => "home#share"
 end

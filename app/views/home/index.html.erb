@@ -34,7 +34,7 @@
         <td>-</td>
         <td class="actions">
           <ul>
-            <li class="share"><%= link_to "Share" %></li>
+            <li class="share"><%= link_to "Share", "#", 'data-folder-id' => folder.id, 'data-folder-name' => folder.name %></li>
             <li class="rename"><%= link_to "Rename", rename_folder_path(folder) %></li>
             <li class="delete"><%= link_to "Delete", folder, :confirm => "Are you sure you want to delete the folder and all of its contents?", :method => :delete %></li>
           </ul>
@@ -57,4 +57,15 @@
     <% end %>
     </tbody>
   </table>
+  
+  <!-- Invitations -->
+  <div id="invitation_form" data-title="Invite others to share">
+    <% form_tag 'home/share' do %>
+      <label for="email_addresses">Enter recipient email addresses</label>
+      <%= text_field_tag 'email_addresses', "", :class => 'text ui-widget-content ui-corner-all' %>
+      <label for="message">Optional message</label>
+      <%= text_area_tag 'message', "", :class => 'text ui-widget-content ui-corner-all' %>
+      <%= hidden_field_tag "folder_id" %>
+    <% end %>
+  </div>
 <% end %>
