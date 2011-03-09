@@ -1,6 +1,9 @@
 class HomeController < ApplicationController
   def index
     if user_signed_in?
+      #show folders shared by others
+      @being_shared_folders = current_user.shared_folders_by_others
+      
       #show only root folders with no parents
       @folders = current_user.folders.roots
       
@@ -15,6 +18,9 @@ class HomeController < ApplicationController
     @current_folder = current_user.folders.find(params[:folder_id])
     
     if @current_folder
+      #if under a sub folder, we shouldn't see any shared folders
+      @being_shared_folders = []
+      
       #getting the folders which are inside this @current_folder
       @folders = @current_folder.children
       
@@ -48,12 +54,12 @@ class HomeController < ApplicationController
       @shared_folder.save
       
       #now we need to email the shared user
+      UserMailer.invitation_to_share(@shared_folder).deliver
     end
     
     #since this action is mainly for ajax, respond with js file back (share.js.erb)
     respond_to do |format|
       format.js {
-        
       }
     end
   end

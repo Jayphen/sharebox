@@ -7,14 +7,19 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :name, :password, :password_confirmation, :remember_me
   
-    validates :email, :presence => true, :uniqueness => true
+  validates :email, :presence => true, :uniqueness => true
 
   has_many :assets
   has_many :folders
+  
   #for folders which this user has shared
   has_many :shared_folders, :dependent => :destroy
+  
   #for folders which the user has been shared by others
   has_many :being_shared_folders, :class_name => "SharedFolder", :foreign_key => "shared_user_id", :dependent => :destroy
+  
+  #for getting Folders shared with the user by others
+  has_many :shared_folders_by_others, :through => :being_shared_folders, :source => :folder
   
   after_create :check_and_assign_shared_ids_to_shared_folders
   
@@ -29,4 +34,5 @@ class User < ActiveRecord::Base
         shared_folder.save
       end
     end
+  end
 end

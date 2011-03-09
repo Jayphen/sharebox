@@ -27,6 +27,14 @@
       </tr>
     </thead>
     <tbody>
+    <% @being_shared_folders.each do |folder| %>
+      <tr class="folder-list shared-with-folders" id="folder_<%= folder.id %>">
+        <td><%= link_to folder.name, browse_path(folder) %></td>
+        <td>-</td>
+        <td>-</td>
+        <td></td>
+      </tr>
+    <% end %>
     <% @folders.each do |folder| %>
       <tr class="folder-list <%= folder.shared? ? 'shared_folder' : 'folder' %>" id="folder_<%= folder.id %>">
         <td><%= link_to folder.name, browse_path(folder) %></td>
@@ -60,7 +68,7 @@
   
   <!-- Invitations -->
   <div id="invitation_form" data-title="Invite others to share">
-    <% form_tag 'home/share' do %>
+    <%= form_tag 'home/share' do %>
       <label for="email_addresses">Enter recipient email addresses</label>
       <%= text_field_tag 'email_addresses', "", :class => 'text ui-widget-content ui-corner-all' %>
       <label for="message">Optional message</label>

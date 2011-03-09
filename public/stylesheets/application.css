@@ -148,6 +148,9 @@ tr.folder-list td:first-of-type:before {
 tr.shared_folder td:first-of-type:before {
   content: "✓";
 }
+tr.shared-with-folders {
+  background: #F0EDE7;
+}
 /* Breadcrumbs */
 .breadcrumbs {
   margin: 10px 0;
