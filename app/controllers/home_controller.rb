@@ -14,8 +14,17 @@ class HomeController < ApplicationController
   
   #for viewing folders
   def browse
-    #folders owned/created by current_user
-    @current_folder = current_user.folders.find(params[:folder_id])
+    # first find the current folder within own folders
+    @current_folder = current_user.folders.find_by_id(params[:folder_id])
+    @is_this_folder_being_shared = false if @current_folder # help hiding buttons in the view
+    
+    # if not found in own folders, find it in being_shared_folders
+    if @current_folder.nil?
+      folder = Folder.find_by_id(params[:folder_id])
+      
+      @current_folder ||= folder if current_user.has_share_access?(folder)
+      @is_this_folder_being_shared = true if @current_folder #help hiding buttons on view
+    end
     
     if @current_folder
       #if under a sub folder, we shouldn't see any shared folders

@@ -4,6 +4,7 @@
     
 <% else %>
 
+<% unless @is_this_folder_being_shared %>
   <nav id="menu">
     <ul>
     <% if @current_folder %>
@@ -15,6 +16,9 @@
     <% end %>
     </ul>
   </nav>
+<% else %>
+  <h3>This folder is being shared to you by <%= @current_folder.user.name %></h3>
+<% end %>
 
   <%= render :partial => "breadcrumbs" %>
 
@@ -42,9 +46,9 @@
         <td>-</td>
         <td class="actions">
           <ul>
-            <li class="share"><%= link_to "Share", "#", 'data-folder-id' => folder.id, 'data-folder-name' => folder.name %></li>
-            <li class="rename"><%= link_to "Rename", rename_folder_path(folder) %></li>
-            <li class="delete"><%= link_to "Delete", folder, :confirm => "Are you sure you want to delete the folder and all of its contents?", :method => :delete %></li>
+            <li class="share"><%= link_to "Share", "#", 'data-folder-id' => folder.id, 'data-folder-name' => folder.name unless @is_this_folder_being_shared %></li>
+            <li class="rename"><%= link_to "Rename", rename_folder_path(folder) unless @is_this_folder_being_shared %></li>
+            <li class="delete"><%= link_to "Delete", folder, :confirm => "Are you sure you want to delete the folder and all of its contents?", :method => :delete unless @is_this_folder_being_shared %></li>
           </ul>
         </td>
       </tr>
@@ -58,7 +62,7 @@
         <td class="actions">
           <ul>
             <li class="download"><%= link_to "Download", download_url(asset) %></li>
-            <li class="delete"><%= link_to "Delete", asset, :confirm => "Are you sure?", :method => :delete %></li>
+            <li class="delete"><%= link_to "Delete", asset, :confirm => "Are you sure?", :method => :delete unless @is_this_folder_being_shared %></li>
           </ul>
         </td>
       </tr>

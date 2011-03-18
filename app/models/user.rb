@@ -35,4 +35,24 @@ class User < ActiveRecord::Base
       end
     end
   end
+  
+  # to check if a user has access to this specific folder
+  def has_share_access?(folder)
+    # has share access if the folder is one of his own
+    return true if self.folders.include?(folder)
+    
+    # has share access if the folder is one of the shared_folders_by_others
+    return true if self.shared_folders_by_others.include?(folder)
+    
+    # for checking sub folders under one of the being_shared_folders
+    return_value = false
+    
+    folder_ancestors.each do |ancestor_folder|
+      if return_value #if it's true
+        return true
+      end
+    end
+    
+    return false
+  end
 end

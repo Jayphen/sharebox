@@ -60,6 +60,10 @@ class AssetsController < ApplicationController
   #this action will let users download the files (after an auth check)
   def get
     asset = current_user.assets.find_by_id(params[:id])
+    
+    # if not found in own assets, check if the current_user has share access tot he parent folder of the File
+    asset ||= Asset.find(params[:id]) if current_user.has_share_access?(Asset.find_by_id(params[:id]).folder)
+    
     if asset
       #Parse the URL for special chars first before downloading
       data = open(URI.parse(URI.encode(asset.uploaded_file.url)))
